@@ -1,0 +1,278 @@
+.push-qr-button {
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  padding: 0;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  width: 50px;
+  height: 60px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 0;
+  transition: background-color 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  z-index: 9999;
+}
+
+.push-qr-button:hover {
+  background-color: #e68a00;
+}
+
+.push-qr-button:active {
+  background-color: #cc7a00;
+}
+
+.push-qr-button svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.push-qr-button.loading {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.push-qr-button.loading svg {
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* QR Modal Styles */
+.qr-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  backdrop-filter: blur(5px);
+}
+
+.qr-modal-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  position: relative;
+  animation: modal-spin-in 0.3s ease-out;
+}
+
+@keyframes modal-spin-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.qr-modal-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #999;
+  border: none;
+  background: none;
+  font-weight: 300;
+  z-index: 10002;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.qr-modal-close:hover {
+  color: #333;
+}
+
+.qr-image-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.qr-modal-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: none;
+}
+
+.qr-modal-image.loaded {
+  display: block;
+}
+
+.qr-loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 112, 192, 0.1);
+  border-left-color: #0070c0;
+  border-radius: 50%;
+  animation: qr-spin 1s linear infinite;
+}
+
+@keyframes qr-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.qr-modal-info {
+  margin-top: 15px;
+  color: #333;
+}
+
+.qr-modal-amount {
+  font-size: 24px;
+  font-weight: bold;
+  color: #0070c0;
+  margin-bottom: 5px;
+}
+
+.qr-modal-owner {
+  font-size: 16px;
+  color: #666;
+}
+
+.qr-modal-account {
+  font-size: 18px;
+  font-weight: bold;
+  color: #666;
+}
+
+.qr-modal-retry-btn {
+  margin-top: 15px;
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  transition: background-color 0.2s;
+  font-family: inherit;
+}
+
+.qr-modal-retry-btn:hover {
+  background-color: #e68a00;
+}
+
+.qr-modal-retry-btn:active {
+  background-color: #cc7a00;
+}
+
+.qr-modal-retry-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.qr-modal-retry-btn.loading svg {
+  animation: spin 2s linear infinite;
+}
+
+.qr-modal-retry-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+/* Stackable Toast Container */
+.qr-toast-container {
+  position: fixed !important;
+  top: 50px !important;
+  right: 10px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  z-index: 2147483647 !important;
+  pointer-events: none !important;
+}
+
+/* MQTT Toast Styles */
+.qr-mqtt-toast {
+  position: relative !important;
+  background-color: #0f0c29 !important;
+  background: linear-gradient(45deg, #1e3c72, #2a5298) !important;
+  color: white !important;
+  padding: 16px !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  transform: translateX(120%) !important;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  max-width: 350px !important;
+  pointer-events: auto !important;
+  opacity: 0;
+}
+
+.qr-mqtt-toast.show {
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+}
+
+.qr-mqtt-toast-icon {
+  font-size: 24px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.qr-mqtt-toast-content {
+  flex: 1;
+}
+
+.qr-mqtt-toast-title {
+  font-weight: bold;
+  font-size: 14px;
+  color: #00d2ff;
+  margin-bottom: 2px;
+}
+
+.qr-mqtt-toast-body {
+  font-size: 13px;
+  color: #eee;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
