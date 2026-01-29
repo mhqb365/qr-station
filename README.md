@@ -2,6 +2,8 @@
 
 **QR Station** là một dự án mã nguồn mở sử dụng ESP32-C3 và màn hình TFT để hiển thị mã QR thanh toán ngân hàng một cách chuyên nghiệp và tiện lợi. Thiết bị hỗ trợ hiển thị mã QR tĩnh và động, tích hợp thông báo giao dịch qua giao thức MQTT
 
+![QR Station](./device.jpg)
+
 ## Tính năng chính
 
 - **Hiển thị VietQR**: Hỗ trợ tối đa 3 tài khoản ngân hàng
@@ -55,9 +57,6 @@
 
 ## Đóng góp
 Rất hoan nghênh mọi sự đóng góp! Nếu có cải tiến mới, hãy Fork dự án và gửi Pull Request
-
-## Giấy phép
-Dự án được phân phối dưới giấy phép [MIT](LICENSE)
 
 ---
 Phát triển bởi [mhqb365.com](https://mhqb365.com)
