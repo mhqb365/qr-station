@@ -12,6 +12,24 @@ void WebManager::begin() {
   authPass = preferences.getString("a_pass", "admin");
   preferences.end();
 
+  // Load saved accounts
+  preferences.begin("bank_data", true);
+  for(int i=0; i<3; i++) {
+      String s = String(i);
+      String prefix = "m" + s;
+      
+      String bin = preferences.getString((prefix + "bin").c_str(), "");
+      String acc = preferences.getString((prefix + "acc").c_str(), "");
+      String bn = preferences.getString((prefix + "bn").c_str(), "");
+      String on = preferences.getString((prefix + "on").c_str(), "");
+
+      strncpy(accounts[i].bin, bin.c_str(), sizeof(accounts[i].bin));
+      strncpy(accounts[i].accNum, acc.c_str(), sizeof(accounts[i].accNum));
+      strncpy(accounts[i].bankName, bn.c_str(), sizeof(accounts[i].bankName));
+      strncpy(accounts[i].ownerName, on.c_str(), sizeof(accounts[i].ownerName));
+  }
+  preferences.end();
+
   // Define routes
   server.on("/", HTTP_GET, std::bind(&WebManager::handleRoot, this));
   server.on("/scan", HTTP_GET, std::bind(&WebManager::handleScan, this));
